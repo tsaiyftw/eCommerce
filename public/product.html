@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Stylish Student Project</title>
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/product_detail.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/render_product_detail.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://js.tappaysdk.com/tpdirect/v5.12.3"></script>
+</head>
+
+<body>
+    
+        <header>
+            <a class="logo" href="/index.html"></a>
+            <a class="category" href="#" onclick="requestProducts('api/1.0/products/women');">女裝</a>
+            <div class="split">|</div>
+            <a class="category" href="#" onclick="requestProducts('api/1.0/products/men');">男裝</a>
+            <div class="split">|</div>
+            <a class="category" href="#" onclick="requestProducts('api/1.0/products/accessories');">配件</a>
+            <div class="search">
+                <div class="searchForm">
+                    <p>
+                        <input type="text" name="keyword" class="search-input" />
+                        <input type="image" src='/style/images/search.png' class="search-icon" />
+                        <input type="image" src='/style/images/search-hover.png' class="search-icon-hovered"
+                            onclick="searchProducts();" />
+                    </p>
+                </div>
+            </div>
+            <a href="#" class="cart"></a>
+            <a href="/profile.html" class="profile"></a>
+        </header>
+        <title>TapPay Fields Bootstrap Example</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <style>
+            header {
+                display: flex;
+            }
+            body {
+                margin: 20px 0;
+            }
+            .jumbotron {
+                text-align: center;
+            }
+            .text-left {
+                text-align: left;
+            }
+            .container {
+                max-width: 750px;
+                margin-top: 20rem;
+            }
+            form {
+                padding: 40px;
+                box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+            }
+            .tappay-field-focus {
+                border-color: #66afe9;
+                outline: 0;
+                -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+                box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+            }
+            .has-error .tappay-field-focus {
+                border-color: #843534;
+                -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+                box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+            }
+            .has-success .tappay-field-focus {
+                border-color: #2b542c;
+                -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+                box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="container">
+            <form>
+               
+                <div class="form-group card-number-group">
+                    <label for="card-number" class="control-label"><span id="cardtype"></span>卡號</label>
+                    <div class="form-control card-number"></div>
+                </div>
+                <div class="form-group expiration-date-group">
+                    <label for="expiration-date" class="control-label">卡片到期日</label>
+                    <div class="form-control expiration-date" id="tappay-expiration-date"></div>
+                </div>
+                <div class="form-group cvc-group">
+                    <label for="cvc" class="control-label">卡片後三碼</label>
+                    <div class="form-control cvc"></div>
+                </div>
+    
+                <button type="submit" class="btn btn-default">Pay</button>
+            </form>
+            <br>
+            <pre class="jumbotron text-left" id="curl">
+            </pre>
+        </div>
+    
+        
+    <div class="wrapper">
+        <script>
+            let url = new URL(location.href);
+            let id = url.searchParams.get("id");
+            productDetail(id);
+        </script>
+        <footer>
+            <div class="footer-container">
+                <a class="footer-text" href="#">About STYLiSH</a>
+                <div class="footer-split">|</div>
+                <a class="footer-text" href="#">Term of Seervice</a>
+                <div class="footer-split">|</div>
+                <a class="footer-text" href="#">Privacy Policy</a>
+                <div class="footer-split">|</div>
+                <a class="footer-text" href="#">Contact Us</a>
+                <div class="footer-split">|</div>
+                <a class="footer-text" href="#">FAQ</a>
+                <div class="footer-space"></div>
+                <a href="#"><img src="/style/images/line.png" class="footer-icon" /></a>
+                <a href="#"><img src="/style/images/twitter.png" class="footer-icon" /></a>
+                <a href="#"><img src="/style/images/facebook.png" class="footer-icon" /></a>
+                <p class="footer-right" href="#">© 2022. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+<script>
+
+async function requestProducts(url) {
+    try {
+        removeProduct();
+        const resAll = await axios.get(url);
+        const products = resAll.data.data;
+
+        let wrapper_dom = document.querySelector(".wrapper");
+
+        // create a product-container dom
+        let product_container_dom = document.createElement("div");
+        product_container_dom.setAttribute("class", "product-container");
+
+        for (let i = 0; i < products.length; i++) {
+            let product = products[i]
+            let pid = product.id;
+            //create a product dom 
+            let prod_dom = document.createElement("a");
+            prod_dom.setAttribute("class", "product");
+            //add a link
+            prod_dom.setAttribute("href", `product.html?id=${pid}`);
+
+            //insert product image
+            let img_dom = document.createElement("img");
+            img_dom.src = product.main_image;
+            img_dom.setAttribute("class", "product-image");
+            prod_dom.appendChild(img_dom);
+
+            //color
+            for (let j = 0; j < product.colors.length; j++) {
+                let color_dom = document.createElement("p");
+                color_dom.setAttribute("class", "color");
+                color_dom.setAttribute("style", `background-color: #${product.colors[j].code}`);
+                prod_dom.appendChild(color_dom);
+            }
+
+            //add name and price
+            let name_dom = document.createElement("p");
+            name_dom.setAttribute("class", "product-title");
+            name_dom.textContent = product.title;
+            prod_dom.appendChild(name_dom);
+
+            //add  price
+            let price_dom = document.createElement("p");
+            price_dom.setAttribute("class", "product-price");
+            price_dom.textContent = `NTD$${product.price}`;
+
+            prod_dom.appendChild(price_dom);
+            product_container_dom.appendChild(prod_dom);
+        }
+
+        // attach the product_container dom to body (wrapper)
+        wrapper_dom.appendChild(product_container_dom)
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function removeProduct() {
+    try {
+        let detail_product_info= document.querySelector(".detail-product-info");
+        let product_detail_description=document.querySelector(".product-detail-description");
+        if (detail_product_info) {
+            detail_product_info.remove();
+        }
+        if (product_detail_description){
+            product_detail_description.remove()
+        }
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function getSearchInput() {
+    try {
+        let search_input_dom = document.querySelector(".search-input");
+        let keyword = search_input_dom.value
+        console.log(keyword)
+        return keyword
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function searchProducts() {
+    try {
+        let keyword = getSearchInput();
+        requestProducts(`api/1.0/products/search?keyword=${keyword}`)
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+</script>
+
+<script>
+
+
+    TPDirect.setupSDK(12348, 'app_pa1pQcKoY22IlnSXq5m5WP5jFKzoRG58VEXpT7wU62ud7mMbDOGzCYIlzzLF', 'sandbox')
+    TPDirect.card.setup({
+        fields: {
+            number: {
+                element: '.form-control.card-number',
+                placeholder: '**** **** **** ****'
+            },
+            expirationDate: {
+                element: document.getElementById('tappay-expiration-date'),
+                placeholder: 'MM / YY'
+            },
+            ccv: {
+                element: $('.form-control.cvc')[0],
+                placeholder: '後三碼'
+            }
+        },
+        styles: {
+            'input': {
+                'color': 'gray'
+            },
+            'input.ccv': {
+                // 'font-size': '16px'
+            },
+            ':focus': {
+                'color': 'black'
+            },
+            '.valid': {
+                'color': 'green'
+            },
+            '.invalid': {
+                'color': 'red'
+            },
+            '@media screen and (max-width: 400px)': {
+                'input': {
+                    'color': 'orange'
+                }
+            }
+        }
+    })
+
+    async function productDetail(pid) {
+    try {
+        const url = `api/1.0/products/details?id=${pid}`
+        const products = await axios.get(url);
+        product = products.data.data;
+        console.log(product)
+        e_color = product.colors[0].code
+        e_size = product.sizes[0]
+
+        let wrapper_dom = document.querySelector(".wrapper");
+
+        // create a product-container dom and add contents
+        let product_container_dom = document.createElement("div");
+        product_container_dom.setAttribute("class", "detail-product-info");
+
+        let more_container_dom = document.createElement("div");
+        more_container_dom.setAttribute("class", "product-detail-description")
+
+        createImage(product_container_dom, product);
+        createPrimaryInfo(product_container_dom, product);
+        createDeatilDescription(more_container_dom, product);
+
+        wrapper_dom.appendChild(product_container_dom);
+        wrapper_dom.appendChild(more_container_dom)
+    } catch (error) {
+        console.error(error)
+    }
+
+}
+
+    // listen for TapPay Field
+    TPDirect.card.onUpdate(function (update) {
+        /* Disable / enable submit button depend on update.canGetPrime  */
+        /* ============================================================ */
+
+        // update.canGetPrime === true
+        //     --> you can call TPDirect.card.getPrime()
+        // const submitButton = document.querySelector('button[type="submit"]')
+        if (update.canGetPrime) {
+            // submitButton.removeAttribute('disabled')
+            $('button[type="submit"]').removeAttr('disabled')
+        } else {
+            // submitButton.setAttribute('disabled', true)
+            $('button[type="submit"]').attr('disabled', true)
+        }
+
+
+        /* Change card type display when card type change */
+        /* ============================================== */
+
+        // cardTypes = ['visa', 'mastercard', ...]
+        var newType = update.cardType === 'unknown' ? '' : update.cardType
+        $('#cardtype').text(newType)
+
+
+
+        /* Change form-group style when tappay field status change */
+        /* ======================================================= */
+
+        // number 欄位是錯誤的
+        if (update.status.number === 2) {
+            setNumberFormGroupToError('.card-number-group')
+        } else if (update.status.number === 0) {
+            setNumberFormGroupToSuccess('.card-number-group')
+        } else {
+            setNumberFormGroupToNormal('.card-number-group')
+        }
+
+        if (update.status.expiry === 2) {
+            setNumberFormGroupToError('.expiration-date-group')
+        } else if (update.status.expiry === 0) {
+            setNumberFormGroupToSuccess('.expiration-date-group')
+        } else {
+            setNumberFormGroupToNormal('.expiration-date-group')
+        }
+
+        if (update.status.cvc === 2) {
+            setNumberFormGroupToError('.cvc-group')
+        } else if (update.status.cvc === 0) {
+            setNumberFormGroupToSuccess('.cvc-group')
+        } else {
+            setNumberFormGroupToNormal('.cvc-group')
+        }
+    })
+
+    $('form').on('submit', function (event) {
+        event.preventDefault()
+        
+        // fix keyboard issue in iOS device
+        forceBlurIos()
+        
+        const tappayStatus = TPDirect.card.getTappayFieldsStatus()
+        console.log(tappayStatus)
+
+        // Check TPDirect.card.getTappayFieldsStatus().canGetPrime before TPDirect.card.getPrime
+        if (tappayStatus.canGetPrime === false) {
+            alert('can not get prime')
+            return
+        }
+
+        // Get prime
+        TPDirect.card.getPrime (async function (result) {
+            if (result.status !== 0) {
+                alert('get prime error ' + result.msg)
+                return
+            }
+            alert('get prime 成功，prime: ' + result.card.prime)
+            try {
+                const token = localStorage.getItem('jwt');
+
+                console.log("token", token);
+                //axios post data to /api/1.0/order/checkout
+                var fields = JSON.stringify({
+                    prime: result.card.prime,
+                    order: {
+                    shipping: "delivery",
+                    payment: "credit_card",
+                    subtotal: price * number,
+                    freight: 100,
+                    total: price * number + 100,
+                    recipient: {
+                        name: 'Mike Wang',
+                        phone: '999999999',
+                        email: '99999999t@gamil.com',
+                        address: 'No 123, Spring Street, Cupertino, CA, USA',
+                        time: 'morning',
+                    },
+                    list: [
+                        {
+                        id: id,
+                        name: title,
+                        price: price,
+                        color: {
+                            code: e_color,
+                            name: select_color_name,
+                        },
+                        size: e_size,
+                        qty: number,
+                        },
+                    ],
+                    },
+                    });
+                    console.log("id:", id)
+
+                const post_data = {
+                    method: "post",
+                    url: "/api/1.0/order/checkout",
+                    headers: {
+                        "content-type":"application/json",
+                        "Authorization": token
+                    },
+                    data: fields,
+                }
+            
+                let responseTP = await axios(post_data);
+                alert(`Pay successfully! Order No.: ${responseTP.data.data.number}`)
+                window.location.href="/thank.html"
+
+            }
+            catch(error){
+                console.log(error)
+                alert(`Pay unsuccefully due to ${error.response}`)
+                // window.location.reload();
+            }
+        })
+    })
+
+    function setNumberFormGroupToError(selector) {
+        $(selector).addClass('has-error')
+        $(selector).removeClass('has-success')
+    }
+
+    function setNumberFormGroupToSuccess(selector) {
+        $(selector).removeClass('has-error')
+        $(selector).addClass('has-success')
+    }
+
+    function setNumberFormGroupToNormal(selector) {
+        $(selector).removeClass('has-error')
+        $(selector).removeClass('has-success')
+    }
+    
+    function forceBlurIos() {
+        if (!isIos()) {
+            return
+        }
+        var input = document.createElement('input')
+        input.setAttribute('type', 'text')
+        // Insert to active element to ensure scroll lands somewhere relevant
+        document.activeElement.prepend(input)
+        input.focus()
+        input.parentNode.removeChild(input)
+    }
+    
+    function isIos() {
+        return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    }
+</script>
+</html>

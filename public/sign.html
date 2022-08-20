@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Stylish Student Project</title>
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/sign.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/render_product.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <a class="logo" href="/index.html"></a>
+            <a class="category" href="#" onclick="requestProducts('api/1.0/products/women');">女裝</a>
+            <div class="split">|</div>
+            <a class="category" href="#" onclick="requestProducts('api/1.0/products/men');">男裝</a>
+            <div class="split">|</div>
+            <a class="category" href="#" onclick="requestProducts('api/1.0/products/accessories');">配件</a>
+            <div class="search">
+                <div class="searchForm">
+                    <p>
+                        <input type="text" name="keyword" class="search-input" />
+                        <input type="image" src='/style/images/search.png' class="search-icon" />
+                        <input type="image" src='/style/images/search-hover.png' class="search-icon-hovered"
+                            onclick="searchProducts();" />
+                    </p>
+                </div>
+            </div>
+            <a href="#" class="cart"></a>
+            <a href="/profile.html" class="profile"></a>
+        </header>
+
+        <div class="banner">
+            <div class = "login_page">
+                
+                <div class = "signup">
+                    <input class="sign_up_control" id="sign_up_name" type="text"  name="name" placeholder="Enter name" reqired/>
+                    <input class="sign_up_control" id="sign_up_email" type="email" name="email" placeholder="Enter email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required  />
+                    <input class="sign_up_control" id="sign_up_pwd" type="password" name="password" placeholder="Enter password" required/>
+                    <button id="sign_up_btn" class="button_control" onclick="signUp(event)">Sign Up</button>
+                </div>
+                <div class = "signin">
+                    <input class="sign_in_control" id='sign_in_email' name="email" type="email" placeholder="Enter email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required/>
+                    <input class="sign_in_control" id='sign_in_pwd' name="password" type="password" placeholder="Enter password" required/>
+                    <button id="sign_in_btn" class="button_control" onclick="signIn(event)">Sign In</button>
+                </div>
+                
+                
+                <div class = "fb_login">Log In with Facebook </br></br>
+                    <!-- The JS SDK Login Button -->
+                    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                    </fb:login-button>
+                    <div id="status"></div>
+                    <!-- Load the JS SDK asynchronously -->
+                    <script async defer crossorigin="anonymous"
+                    src="https://connect.facebook.net/en_US/sdk.js"
+                    src="https://unpkg.com/axios/dist/axios.min.js"
+                    ></script>
+                </div>
+        
+        </div>
+    </div>
+    
+    </div>
+        <footer>
+            <div class="footer-container">
+                <a class="footer-text" href="#">About STYLiSH</a>
+                <div class="footer-split">|</div>
+                <a class="footer-text" href="#">Term of Seervice</a>
+                <div class="footer-split">|</div>
+                <a class="footer-text" href="#">Privacy Policy</a>
+                <div class="footer-split">|</div>
+                <a class="footer-text" href="#">Contact Us</a>
+                <div class="footer-split">|</div>
+                <a class="footer-text" href="#">FAQ</a>
+                <div class="footer-space"></div>
+                <a href="#"><img src="/style/images/line.png" class="footer-icon" /></a>
+                <a href="#"><img src="/style/images/twitter.png" class="footer-icon" /></a>
+                <a href="#"><img src="/style/images/facebook.png" class="footer-icon" /></a>
+                <p class="footer-right" href="#">© 2022. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+<script src="/js/sign.js"></script>
+</html>

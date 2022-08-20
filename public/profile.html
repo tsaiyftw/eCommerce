@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Stylish Student Project</title>
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/profil.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/render_product.js"></script>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <header>
+            <a class="logo" href="/index.html"></a>
+            <a class="category" href="#" onclick="requestProducts('api/1.0/products/women');">女裝</a>
+            <div class="split">|</div>
+            <a class="category" href="#" onclick="requestProducts('api/1.0/products/men');">男裝</a>
+            <div class="split">|</div>
+            <a class="category" href="#" onclick="requestProducts('api/1.0/products/accessories');">配件</a>
+            <div class="search">
+                <div class="searchForm">
+                    <p>
+                        <input type="text" name="keyword" class="search-input" />
+                        <input type="image" src='/style/images/search.png' class="search-icon" />
+                        <input type="image" src='/style/images/search-hover.png' class="search-icon-hovered"
+                            onclick="searchProducts();" />
+                    </p>
+                </div>
+            </div>
+            <a href="#" class="cart"></a>
+            <a href="/profile.html" class="profile"></a>
+        </header>
+
+        <div class="banner">
+            <div class = profile_info>
+                <div id="picture_outline">Member Profile Picture<img id="picture"></div>
+                <div id="provider"></div>
+                <div id="name"></div>
+                <div id="email"></div>
+                <button id="logout_btn" onclick="logout()">Log out</button>
+              </div>
+        
+        </div>
+    </div>
+    
+    </div>
+        <footer>
+            <div class="footer-container">
+                <a class="footer-text" href="#">About STYLiSH</a>
+                <div class="footer-split">|</div>
+                <a class="footer-text" href="#">Term of Seervice</a>
+                <div class="footer-split">|</div>
+                <a class="footer-text" href="#">Privacy Policy</a>
+                <div class="footer-split">|</div>
+                <a class="footer-text" href="#">Contact Us</a>
+                <div class="footer-split">|</div>
+                <a class="footer-text" href="#">FAQ</a>
+                <div class="footer-space"></div>
+                <a href="#"><img src="/style/images/line.png" class="footer-icon" /></a>
+                <a href="#"><img src="/style/images/twitter.png" class="footer-icon" /></a>
+                <a href="#"><img src="/style/images/facebook.png" class="footer-icon" /></a>
+                <p class="footer-right" href="#">© 2022. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+<script src="/js/profile.js"></script>
+</html>

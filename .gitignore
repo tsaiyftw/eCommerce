@@ -1,0 +1,7 @@
+.env
+node_modules
+data_storage
+public/product_images
+.DS_Store
+
+

@@ -1,0 +1,96 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product management</title>
+</head>
+
+<body>
+    <h2>Product Management: Create New Product</h2>
+    <!-- public/product.html file -->
+    <form action="/upload" enctype="multipart/form-data" method="post">
+        <p>
+            <label for="category">Category</label>
+            <select name="categoryInput">
+                <option value="women">Women</option>
+                <option value="men">Men</option>
+                <option value="accessories">Accessories</option>
+            </select>
+        </p>
+        <p>
+            <label for="title">Title</label>
+            <input type="text" placeholder="Enter title" id="titleInput" name="titleInput" required>
+        </p>
+        <p>
+            <label for="description">Description</label>
+            <input type="text" placeholder="Enter description" id="descriptionInput" name="descriptionInput" required>
+        </p>
+        <p>
+            <label for="price">Price</label>
+            <input type="number" placeholder="Enter price" id="priceInput" name="priceInput" min="1" required>
+        </p>
+        <p>
+            <label for="texture">Texture</label>
+            <input type="text" placeholder="Enter texture" id="textureInput" name="textureInput" required>
+        </p>
+        <p>
+            <label for="wash">Wash method</label>
+            <input type="text" placeholder="Enter wash method" id="washInput" name="washInput" required>
+        </p>
+        <p>
+            <label for="place">Place</label>
+            <input type="text" placeholder="Enter place" id="placeInput" name="placeInput" required>
+        </p>
+        <p>
+            <label for="note">Note</label>
+            <input type="text" placeholder="Enter note" id="noteInput" name="noteInput" required>
+        </p>
+        <p>
+            <label for="story">Story</label>
+            <input type="text" placeholder="Enter story" id="storyInput" name="storyInput" required>
+        </p>
+        <p>
+            <label for="Main_image">Main image</label>
+            <input type="file" placeholder="Upload main image" id="main_imageInput" name="main_imageInput"
+                name="photo" />
+        </p>
+        <p>
+            <label for="Image_0">Other Image #1</label>
+            <input type="file" placeholder="Upload Image 1" id="image_0_Input" name="image_0_Input" name="photo" />
+        </p>
+        <p>
+            <label for="Image_1">Other Image #2</label>
+            <input type="file" placeholder="Upload Image 2" id="image_1_Input" name="image_1_Input" name="photo" />
+        </p>
+        <p>
+            <label for="Image_2">Other Image #3</label>
+            <input type="file" placeholder="Upload Image 3" id="image_2_Input" name="image_2_Input" name="photo" />
+        </p>
+
+        <p>
+        <p>**Section of Product size, color and stock number option**</p>
+        </p>
+        <label for="size">Size</label>
+        <input type="text" placeholder="Enter size" id="sizeInput" name="sizeInput" required>
+        <p>
+            <label for="color_code">Color code</label>
+            <input type="text" placeholder="Enter color code" id="color_codeInput" name="color_codeInput" required>
+        </p>
+        <p>
+            <label for="color_name">Color name</label>
+            <input type="text" placeholder="Enter color name" id="color_nameInput" name="color_nameInput" required>
+        </p>
+        <p>
+            <label for="stock">Stock number</label>
+            <input type="text" placeholder="Enter stock number" id="stockInput" name="stockInput" min="1" required>
+        </p>
+        <p>
+            <input type="submit" value="Upload new product data">
+        </p>
+        <p> </p>
+    </form>
+</body>
+
+</html>

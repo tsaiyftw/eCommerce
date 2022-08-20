@@ -1,0 +1,32 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Campaigns </title>
+</head>
+
+<body>
+    <h2>Marketing Campaigns</h2>
+    <!-- public/product.html file -->
+    <form action="/uploadCompaign" enctype="multipart/form-data" method="post">
+        <p>
+            <label for="product_id">Product ID</label>
+            <input type="number" placeholder="Enter product ID" id="product_id" name="product_id" min="1" required>
+        </p>
+        <p>
+            <label for="story">Story</label>
+            <textarea type="text" placeholder="Enter a story" id="story" name="story" cols="70" rows="10" autocomplete="on" required></textarea>
+        </p>
+        <p>
+            <label for="picture">Picture</label>
+            <input type="file" placeholder="Upload a picture" id="picture" name="picture" required/>
+        </p>
+        <p>
+            <input type="submit" value="Upload campaigns data">
+        </p>
+    </form>
+</body>
+
+</html>
